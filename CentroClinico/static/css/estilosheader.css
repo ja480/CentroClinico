@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+
+/* Configuracion HEADER */
+header{
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    background-color: aqua;
+    align-items: center;
+    padding: 5px;
+}
+
+nav a{
+    font-size: small;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+nav a:hover{
+    color: white;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* Fin Configuracion HEADER */
+

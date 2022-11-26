@@ -15,17 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CentroClinico.Controllers import clinica, inicio, contacto, servicios, acerca, agenda, especialidades, examenes
+from CentroClinico.views import Index, RegCita, SobreNosotros, Servicios, crearcuenta
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/', inicio),
-    path('clinica/', clinica),
-    path('contacto/', contacto),
-    path('servicio/', servicios),
-    path('acerca/', acerca),
-    path('agenda/', agenda),
-    path('especialidades/', especialidades),
-    path('examenes/', examenes),
+
+    path('index/',Index),
+
+    path('registro/', RegCita),
+    path('servicios/', Servicios),
+    path('sobrenosotros/', SobreNosotros),
+    path('crearcuenta/', crearcuenta),
+
 ]
