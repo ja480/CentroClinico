@@ -1,0 +1,36 @@
+{% extends "board/board.html" %}
+{% block title %} Contacto {% endblock %}
+{% block content %}
+<html>
+    <body>
+        <h1>
+            Enviar una solicitud
+            <span class="follow-up-hint">
+              
+            </span>
+          </h1>
+            <div class="form-field string required request_anonymous_requester_email"><label for="request_anonymous_requester_email">Correo electrónico</label>
+            <input type="text" name="request[anonymous_requester_email]" id="request_anonymous_requester_email" aria-required="true" />
+            </div>
+            
+                <div class="form-field string  required  request_subject" >
+                  <label id="request_subject_label" for="request_subject">Asunto</label>
+                  <input type="text" name="request[subject]" id="request_subject" maxlength="150" size="150" aria-required="true" aria-labelledby="request_subject_label" />
+                  
+                  
+                </div>
+            
+                
+                  <div class="suggestion-list" data-hc-class="searchbox" data-hc-suggestion-list="true"></div>
+                
+              
+                <div class="form-field text  required  request_description" >
+                  <label id="request_description_label" for="request_description">Descripción</label>
+                  <textarea name="request[description]" id="request_description" aria-required="true" aria-describedby="request_description_hint" aria-labelledby="request_description_label" data-helper="wysiwyg"></textarea><input type="hidden" name="request[description_mimetype]" id="request_description_mimetype" value="text/html" style="display: none;" />
+                  
+                  <p>Ingrese los detalles de su solicitud. Un miembro de nuestro personal de soporte responderá a la brevedad.</p>
+                </div>
+                
+    </body>
+</html>
+{% endblock %}
