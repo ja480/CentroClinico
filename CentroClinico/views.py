@@ -17,6 +17,8 @@ def SobreNosotros(request):
 def Servicios(request):
     return render(request, 'Servicios.html')
 
+# MOD
+
 def crearcuenta(request):
 	error = ""
 	user="none"
