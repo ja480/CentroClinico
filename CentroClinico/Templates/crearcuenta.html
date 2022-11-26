@@ -1,14 +1,28 @@
 {% load static %}
-{% block title %} Crear Cuenta {% endblock %}
-
-
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{% block title %} Crear Cuenta {% endblock %}</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
 {% block sections %}
 <!-- //Este es el cuerpo -->
 <div class="row register-form">
     <div class="col-md-8 offset-md-2">
         <form class="custom-form" style="margin-top: 0px;" method="post">
             {% csrf_token %}
-            <h1>Resgistro Usuario</h1>
+            <h1>Registrar al usuario</h1>
             <div class="form-row form-group">
                 <div class="col-sm-4 label-column">
                     <label class="col-form-label" for="name-input-field">Nombre </label>
@@ -101,7 +115,7 @@
         </form>
     </div>
 </div>
-<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-arrow-circle-up"></i></span></div>
+<!-- <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-arrow-circle-up"></i></span></div> -->
 
 {% endblock %}
 
