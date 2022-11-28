@@ -15,18 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CentroClinico.views import Index, RegCita, SobreNosotros, Servicios, crearcuenta
+from CentroClinico.views import Index, RegCita, SobreNosotros, Servicios, crearcuenta, iniciarsesion
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     path('index/',Index),
-
     path('registro/', RegCita),
     path('servicios/', Servicios),
     path('sobrenosotros/', SobreNosotros),
     path('crearcuenta/', crearcuenta),
-
+    path('iniciarsesion/', iniciarsesion),
 ]

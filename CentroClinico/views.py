@@ -51,3 +51,15 @@ def crearcuenta(request):
 	#print(error)
 	return render(request,'crearcuenta.html',d)
 	#return render(request,'createaccount.html')
+
+def iniciarsesion(request):
+	error=""
+	if request.method == 'POST':
+		email = request.POST['email']
+		password = request.POST['password']
+		try:
+			if password == password:
+				return render(request,'Index.html')
+		except Exception as e:
+			error = "yes"
+	return render(request, 'IniciarSesion.html')
