@@ -89,6 +89,10 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.carousel, .carousel-inner > .item > img {
+  height: 100px;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
