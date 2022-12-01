@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CentroClinico',
-    #'django_google_maps',
+    'django_google_maps',
 ]
 
 MIDDLEWARE = [
