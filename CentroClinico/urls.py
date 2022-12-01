@@ -15,28 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-<<<<<<< Updated upstream
-from CentroClinico.views import Index, RegCita, SobreNosotros, Servicios, CrearCuenta, iniciarsesion
-=======
 from CentroClinico.views import index, regcita, sobrenosotros, servicios, crearcuenta, iniciarsesion
->>>>>>> Stashed changes
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< Updated upstream
-    path('index/',Index),
-    path('registro/', RegCita),
-    path('servicios/', Servicios),
-    path('sobrenosotros/', SobreNosotros),
-    path('crearcuenta/', CrearCuenta),
-=======
     path('index/',index),
     path('registro/', regcita),
     path('servicios/', servicios),
     path('sobrenosotros/', sobrenosotros),
     path('crearcuenta/', crearcuenta),
->>>>>>> Stashed changes
     path('iniciarsesion/', iniciarsesion),
+    
 ]

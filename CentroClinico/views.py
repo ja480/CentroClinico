@@ -3,17 +3,17 @@ from django.shortcuts import render
 from .models import *
 from django.contrib.auth.models import User,Group
 
-def Index(request):
-    return render(request, 'Index.html')
+def index(request):
+    return render(request, 'index.html')
 
-def RegCita(request):
-    return render(request, 'RegCita.html')
+def regcita(request):
+    return render(request, 'regcita.html')
 
-def SobreNosotros(request):
-    return render(request, 'SobreNosotros.html')
+def sobrenosotros(request):
+    return render(request, 'sobrenosotros.html')
 
-def Servicios(request):
-    return render(request, 'Servicios.html')
+def servicios(request):
+    return render(request, 'servicios.html')
 
 # MOD
 
@@ -57,7 +57,7 @@ def iniciarsesion(request):
 		password = request.POST['password']
 		try:
 			if password == password:
-				return render(request,'Index.html')
+				return render(request,'index.html')
 		except Exception as e:
 			error = "yes"
-	return render(request, 'IniciarSesion.html')
+	return render(request, 'iniciarsesion.html')
