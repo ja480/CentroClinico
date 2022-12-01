@@ -102,7 +102,7 @@
             </div>
         </header>
         {% block sections %}
-        
+        <div id="mapa"></div>
         {% endblock %}
         <!-- Footer-->
         <footer class="footer text-center">
@@ -126,7 +126,7 @@
                         <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
                     </div>
                     <!-- Footer Google maps-->
-                    <div class="map_canvas_wrapper"><div id="map_canvas"></div></div>
+                    <div id="mapa"></div>
                 </div>
             </div>
         </footer>
@@ -139,5 +139,18 @@
         <!-- Core theme JS-->
         <script src="{% static 'js/scripts.js' %}"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADKzLDTllBgGVJ5WrrGsXZQiVaep5IMAA"></script>
+        <script>
+          google.maps.event.addDomListener(window,"load",function(){
+            var mapElement = document.getElementById("mapa")
+            var map = new google.maps.Map(mapElement,{
+              center: {
+                lat: 28.41176483465512, 
+                lng: -106.89987596374735
+              },
+              zoom: 15
+            })
+          })
+        </script>
     </body>
 </html>

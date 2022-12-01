@@ -3,8 +3,6 @@ from django.shortcuts import render
 from .models import *
 from django.contrib.auth.models import User,Group
 
-
-
 def Index(request):
     return render(request, 'Index.html')
 

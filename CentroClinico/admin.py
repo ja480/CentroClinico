@@ -6,7 +6,7 @@ from django_google_maps import fields as map_fields
 # Register your models here.
 class RentalAdmin(admin.ModelAdmin):
     formfield_overrides = {
-        map_fields.AddressField: {'widget': map_widgets.GoogleMapsAddressWidget},
+        map_fields.AddressField: {'widget': map_widgets.GoogleMaps},
     }
 
 admin.site.register(Patient)
