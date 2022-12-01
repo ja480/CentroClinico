@@ -17,7 +17,7 @@ def servicios(request):
 
 # MOD
 
-def CrearCuenta(request):
+def crearcuenta(request):
 	error = ""
 	user="none"
 	if request.method == 'POST':
