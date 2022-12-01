@@ -90,7 +90,7 @@ body {
 }
 
 .carousel, .carousel-inner > .item > img {
-  height: 100px;
+  height: 50%;
 }
 
 hr {
