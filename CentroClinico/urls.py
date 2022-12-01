@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CentroClinico.views import index, regcita, sobrenosotros, servicios, crearcuenta, iniciarsesion
+from CentroClinico.views import index, regcita, sobrenosotros, servicios, CrearCuenta, iniciarsesion
 
 
 
@@ -25,7 +25,7 @@ urlpatterns = [
     path('registro/', regcita),
     path('servicios/', servicios),
     path('sobrenosotros/', sobrenosotros),
-    path('crearcuenta/', crearcuenta),
+    path('crearcuenta/', CrearCuenta),
     path('iniciarsesion/', iniciarsesion),
     
 ]
