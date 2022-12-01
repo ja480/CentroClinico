@@ -3,81 +3,82 @@
 {% block title %} Registro {% endblock %}
 
 
-    {% block sections %}
-    <!-- Contact Section-->
-    <section class="page-section" id="register">
-        <div class="container">
-            <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Registramos tu cita <p><br>
-                    contáctanos</p>
-            </h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-phone"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Contact Section Form-->
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-xl-7">
+{% block sections %}
+<!-- Contact Section-->
+<section class="page-section" id="register">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Registramos tu cita <p><br>
+                contáctanos</p>
+        </h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-phone"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Contact Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
 
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                        <!-- Name input-->
-                        <h3>Nombre completo</h3>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="name" type="text" placeholder="Enter your name..."
-                                data-sb-validations="required" />
-                            <label for="name"></label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">Este campo es obligatorio
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <!-- Name input-->
+                    <h3>Nombre completo</h3>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="name" type="text" placeholder="Enter your name..."
+                            data-sb-validations="required" />
+                        <label for="name"></label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">Este campo es obligatorio
+                        </div>
+                    </div>
+
+                    <!-- Email address input-->
+                    <h3>Correo electrónico</h3>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="email" type="email" placeholder="name@example.com"
+                            data-sb-validations="required,email" />
+                        <label for="email"></label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">Este campo es obligatorio
+                        </div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">La dirección de correo no es
+                            válida</div>
+                    </div>
+                    
+                    <!-- Phone number input-->
+                    <h3>Número de teléfono</h3>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
+                            data-sb-validations="required" />
+                        <label for="phone"></label>
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">Este campo es obligatorio
+                        </div>
+                    </div>
+                    <!-- Message input-->
+                    <h3>Asunto</h3>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..."
+                            style="height: 10rem" data-sb-validations="required"></textarea>
+                        <label for="message"></label>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">Este campo es obligatorio
+                        </div>
+                    </div>
+                    <h3>Fecha</h3>
+                    <div class="form-floating mb-3">
+                        <label for="date">Fecha</label>
+                        <div class="form-floating mb-3" id="date" data-target-input="nearest">
+                            <input type="date" name="date" class="form-control datetimepicker-input"
+                                data-target="#datemaintenance" />
+                            <div class="input-group-append" data-target="#date" data-toggle="datetimepicker">
                             </div>
                         </div>
-                        <!-- Email address input-->
-                        <h3>Correo electrónico</h3>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" placeholder="name@example.com"
-                                data-sb-validations="required,email" />
-                            <label for="email"></label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">Este campo es obligatorio
-                            </div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">La dirección de correo no es
-                                válida</div>
-                        </div>
-                        <!-- Phone number input-->
-                        <h3>Número de teléfono</h3>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
-                                data-sb-validations="required" />
-                            <label for="phone"></label>
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">Este campo es obligatorio
-                            </div>
-                        </div>
-                        <!-- Message input-->
-                        <h3>Asunto</h3>
-                        <div class="form-floating mb-3">
-                            <textarea class="form-control" id="message" type="text"
-                                placeholder="Enter your message here..." style="height: 10rem"
-                                data-sb-validations="required"></textarea>
-                            <label for="message"></label>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">Este campo es obligatorio
-                            </div>
-                        </div> 
-                        <h3>Fecha</h3>
-                        <div class="form-floating mb-3">
-                            <label for="date">Fecha</label>
-                            <div class="form-floating mb-3" id="date" data-target-input="nearest">
-                                <input type="date" name="date" class="form-control datetimepicker-input"
-                                    data-target="#datemaintenance" />
-                                <div class="input-group-append" data-target="#date" data-toggle="datetimepicker">
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-success">Registar cita</button>
-                    </form>
-                </div>
+                    </div>
+                    <button class="btn btn-primary submit-button" type="submit">Registrar cita</button>
+                </form>
             </div>
         </div>
-    </section>
-    {% endblock %}
+    </div>
+</section>
+{% endblock %}
 </body>
 
 </html>
