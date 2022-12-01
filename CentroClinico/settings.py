@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CentroClinico',
-    #'django_google_maps',
+    'django_google_maps',
 ]
 
 MIDDLEWARE = [
@@ -131,5 +131,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'CentroClinico/static'),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# GOOGLEMAPS_API_KEY: ' '
+AIzaSyADKzLDTllBgGVJ5WrrGsXZQiVaep5IMAA='API_KEY'
+GOOGLE_MAPS_API_KEY = 'API_KEY'
+
 
