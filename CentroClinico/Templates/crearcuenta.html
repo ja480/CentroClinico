@@ -121,7 +121,7 @@
 
 {% if error == "no" %}
 <script type="text/javascript">
-    alert('Paciente creado correctamente.')
+    alert('El email ingresado ya existe')
     window.location = ('#')
 </script>
 {% endif%}
@@ -129,7 +129,7 @@
 {% if error == "yes" %}
 <script type="text/javascript">
     /*alert('{{e}}')*/
-    alert('El email ingresado ya existe')
+    alert('El email ingresado se guardo correctamente')
 </script>
 {% endif %}
 

@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.104.2">
-  <title>Carousel Template · Bootstrap v5.2</title>
+  <title>Centro Clinico/title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
 
@@ -144,16 +144,18 @@
               <img src="{% static 'assets/img/logoclinica.png' %}" alt="mdo" width="32" height="32"
                 class="rounded-circle">
             </a>
-            <ul class="dropdown-menu text-small shadow">
-              <li><a target="_blank" class="dropdown-item" href="/crearcuenta/">Registrarse</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a target="_blank" class="dropdown-item" href="/iniciarsesion/">Iniciar sesion</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            </ul>
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'logout' %}">cerrar sesion</a>
+            </li>
+            <li>
+              <a href="#">{{ user.username }}</a>
+            </li>
+            {% else %}
+            <li>
+              <a href="{% url 'login' %}">iniciar sesion</a>
+            </li>
+            {% endif %}
           </div>
           {% endblock %}
         </div>
@@ -180,7 +182,7 @@
               <div class="carousel-caption text-start">
                 <h1>Enfermería especializada.</h1>
                 <p>Ofrecemos un servicio especializado, con enfermeras y auxiliares entrenadas y expertas.</p>
-                <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/docs/5.2/examples/carousel/#">Sign
+                <p><a class="btn btn-lg btn-primary" href="/crearcuenta/">Sign
                     up today</a></p>
               </div>
             </div>
