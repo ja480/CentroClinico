@@ -103,6 +103,7 @@ body {
 
 .carousel, .carousel-inner > .item > img {
   height: 50%;
+  opacity: 0.9;
 }
 
 hr {
@@ -6195,7 +6196,7 @@ textarea.form-control-lg {
   left: 15%;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-  color: #fff;
+  color: #066173;
   text-align: center;
 }
 

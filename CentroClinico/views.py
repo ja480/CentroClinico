@@ -4,7 +4,7 @@ from .models import *
 from django.contrib.auth.models import User,Group
 
 def index(request):
-    return render(request, 'index.html')
+	return render(request, 'Index.html')
 
 def regcita(request):
     return render(request, 'regcita.html')
