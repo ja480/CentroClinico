@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'CentroClinico',
     'django_google_maps',
+    'widget_tweaks',
+    'bootstrap4',
+    'citas',
 ]
 
 MIDDLEWARE = [
@@ -86,11 +89,12 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '', 
         'HOST':'localhost',
-        'PORT': '3307',
+        'PORT': '3306',
+         'OPTIONS':{
+            'sql_mode' : 'traditional',
+        }
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 

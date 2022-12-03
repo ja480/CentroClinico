@@ -4,6 +4,11 @@ from .models import *
 from django.contrib.auth.models import User,Group
 from django.contrib.auth import authenticate,logout,login
 from django.utils import timezone
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse
+from django.contrib.messages.views import SuccessMessageMixin
+from citas.models import Appointment
 
 def index(request):
 	return render(request, 'Index.html')

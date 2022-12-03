@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Citas</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% load static %}
+    {% load widget_tweaks %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+    <!-- -->
+    <main role="main">
+
+        <div class="container text-center mt-5">
+
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <h1 style="font-size: 28px;">Citas</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Citas pendientes</h5>
+                </div>
+            </div>
+            <div class="row mb-5">
+
+                <div class="card col-md-2">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item active">Citas</li>
+                    </ul>
+                </div>
+                <div class="col-md-10">
+                    <div class="table-responsive">
+
+                        <nav aria-label="breadcrumb mb-3">
+                            <ol class="breadcumb">
+                                <li class="breadcrumb-item"><a href="../">Citas</a></li>
+                                <!--?-->
+                                <li class="breadcrumb-item active" aria-current="page">Editar</li>
+                            </ol>
+                        </nav>
+                        <!-- -->
+                        <div class="formulario" align="left">
+                            <h4> Detalles: </h4>
+                            <p> <span class="txt_negrita"> Nombre del doctor </span> <br> {{object.doctorname}}</p>
+                            <p> <span class="txt_negrita"> Email del doctor </span> <br> {{object.doctoremail}}</p>
+                            <p> <span class="txt_negrita"> Nombre del paciente </span> <br> {{object.patientname}}</p>
+                            <p> <span class="txt_negrita"> Email del paciente </span> <br> {{object.patientemail}}</p>
+                            <p> <span class="txt_negrita"> Fecha de la cita </span> <br> {{object.appointmentdate}}</p>
+                            <p> <span class="txt_negrita"> Hora de la cita </span> <br> {{object.appointmenttime}}</p>
+                            <p> <span class="txt_negrita"> Sintomas del paciente </span> <br> {{object.symptoms}}</p>
+                            <p> <span class="txt_negrita"> Estatus </span> <br> {{object.status}}</p>
+                            <p> <span class="txt_negrita"> Preinscripcion medica </span> <br> {{object.prescription}}</p>
+                            <a href="../" type="submit" class = "btn btn-primary"> Volver </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <!-- Aqui va el codigo -->
+    {% bootstrap_javascript jquery='full' %}
+    <!-- -->
+</body>
+
+</html>
