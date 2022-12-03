@@ -71,50 +71,50 @@ def crearcuenta(request):
 # 	return render(request, 'login.html')
 
 
-def login(request):
-    error = ""
-    if request.method == 'POST':
-        u = request.POST['email']
-        p = request.POST['password']
-        user = authenticate(username=u, password=p)
-        try:
-            if user.is_staff:
-                login(request, user)
-                error = "no"
-            else:
-                error = "yes"
-        except:
-            error = "yes"
-    return render(request,'registration/login.html', locals())
-
-
 # def login(request):
-# 	error = ""
+#     error = ""
+#     if request.method == 'POST':
+#         u = request.POST['email']
+#         p = request.POST['password']
+#         user = authenticate(username=u, password=p)
+#         try:
+#             if user.is_staff:
+#                 login(request, user)
+#                 error = "no"
+#             else:
+#                 error = "yes"
+#         except:
+#             error = "yes"
+#     return render(request,'registration/login.html', locals())
 
-# 	if request.method == 'POST':
-# 		u = request.POST['email']
-# 		p = request.POST['password']
-# 		user = authenticate(request,username=u,password=p)
-# 		try:
-# 			if user is not None:
-# 				login(request,user)
-# 				error = "no"
-# 				g = request.user.groups.all()[0].name
-# 				if g == 'Doctor':
-# 					page = "doctor"
-# 					d = {'error': error,'page':page}
-# 					return render(request,'index.html',d)
-# 				elif g == 'Receptionist':
-# 					page = "reception"
-# 					d = {'error': error,'page':page}
-# 					return render(request,'index.html',d)
-# 				if g == 'Patients':
-# 					d = {'error': error}
-# 					return render(request,'index.html',d)
-# 			else:
-# 				error = "yes"
-# 		except Exception as e:
-# 			error = "yes"
-# 			#print(e)
-# 			#raise e
-# 	return render(request,'registration/login.html')
+
+def login(request):
+	error = ""
+
+	if request.method == 'POST':
+		u = request.POST['email']
+		p = request.POST['password']
+		user = authenticate(request,username=u,password=p)
+		try:
+			if user is not None:
+				login(request,user)
+				error = "no"
+				g = request.user.groups.all()[0].name
+				if g == 'Doctor':
+					page = "doctor"
+					d = {'error': error,'page':page}
+					return render(request,'index.html',d)
+				elif g == 'Receptionist':
+					page = "reception"
+					d = {'error': error,'page':page}
+					return render(request,'index.html',d)
+				if g == 'Patients':
+					d = {'error': error}
+					return render(request,'index.html',d)
+			else:
+				error = "yes"
+		except Exception as e:
+			error = "yes"
+			#print(e)
+			#raise e
+	return render(request,'registration/login.html')

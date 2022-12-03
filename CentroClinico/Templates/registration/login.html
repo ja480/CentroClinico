@@ -73,6 +73,7 @@
 
 <body>
 
+
     {% if error == "no" %}
     <script>
         alert('Logged In Successfully');
@@ -89,6 +90,7 @@
     <br><br><br><br>
     <form method="post">
         {% csrf_token %}
+        
         <div class="container register-form mt-2" style="width : 600px;">
             <div class="form">
                 <div class="note">
@@ -97,22 +99,7 @@
 
                 <div class="form-content">
                     <div class="row mt-5">
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input class="form-control py-3" type="text" name="email" required=""
-                                    placeholder="Ingrese su correo">
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-
-                                <input class="form-control py-3" type="password" name="password" required=""
-                                    placeholder="Ingrese su Contraseña">
-
-                            </div>
-                        </div>
+                        {{ form }}
                     </div>
                     <div class="form-content">
                         <button type="submit" class="btnSubmit">Login</button>

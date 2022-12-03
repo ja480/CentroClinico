@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/index'
 LOGOUT_REDIRECT_URL = '/index'
 
 # Application definition
@@ -89,7 +89,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '', 
         'HOST':'localhost',
-        'PORT': '3306',
+        'PORT': '3307',
          'OPTIONS':{
             'sql_mode' : 'traditional',
         }
