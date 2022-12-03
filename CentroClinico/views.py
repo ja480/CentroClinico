@@ -69,8 +69,8 @@ def crearcuenta(request):
 def login(request):
     error = ""
     if request.method == 'POST':
-        u = request.POST['uname']
-        p = request.POST['pwd']
+        u = request.POST['email']
+        p = request.POST['password']
         user = authenticate(username=u, password=p)
         try:
             if user.is_staff:
@@ -80,7 +80,7 @@ def login(request):
                 error = "yes"
         except:
             error = "yes"
-    return render(request,'login.html', locals())
+    return render(request,'registration/login.html', locals())
 
 
 # def login(request):
@@ -95,14 +95,14 @@ def login(request):
 # 				login(request,user)
 # 				error = "no"
 # 				g = request.user.groups.all()[0].name
-# 				# if g == 'Doctor':
-# 				# 	page = "doctor"
-# 				# 	d = {'error': error,'page':page}
-# 				# 	return render(request,'doctorhome.html',d)
-# 				# elif g == 'Receptionist':
-# 				# 	page = "reception"
-# 				# 	d = {'error': error,'page':page}
-# 				# 	return render(request,'receptionhome.html',d)
+# 				if g == 'Doctor':
+# 					page = "doctor"
+# 					d = {'error': error,'page':page}
+# 					return render(request,'index.html',d)
+# 				elif g == 'Receptionist':
+# 					page = "reception"
+# 					d = {'error': error,'page':page}
+# 					return render(request,'index.html',d)
 # 				if g == 'Patients':
 # 					d = {'error': error}
 # 					return render(request,'index.html',d)
@@ -112,4 +112,4 @@ def login(request):
 # 			error = "yes"
 # 			#print(e)
 # 			#raise e
-# 	return render(request,'login.html')
+# 	return render(request,'registration/login.html')
