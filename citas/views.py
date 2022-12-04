@@ -35,11 +35,3 @@ class CitasEliminar(SuccessMessageMixin, DeleteView):
         sucess_message = "Registro eliminado correctamente"
         #messages.sucess(self.request, (sucess_message))
         return reverse ('leer')
-
-class CitasActualizar(SuccessMessageMixin, UpdateView):
-    model = Appointment
-    form = Appointment
-    fields = '__all__'
-    success_message = "Vehiculo actualizado correctamente"
-    def get_success_url(self):
-        return reverse('leer')

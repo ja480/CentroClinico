@@ -41,7 +41,7 @@
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <label for="doctorname" class="txt negrita">Nombre del doctor</label>
-                                    <input type="text   " name="doctorname" value="" class="form-control">
+                                    <input type="text" name="doctorname" value="" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="doctoremail" class="txt negrita">Email del doctor</label>
@@ -56,18 +56,18 @@
                                     <input type="text" name="patientemail" value="" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <div class="form-group">
+                                    <div class="col-sm-4 label-column">
                                         <label class="txt negrita" for="appointmentdate">Fecha de cita</label>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-sm-6 input-column">
                                         <input type = "date" class="txt negrita" name="appointmentdate" required="">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="form-group">
+                                    <div class="col-sm-4 label-column">
                                         <label class="col-form-label" for="input-field">Hora de la cita</label>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-sm-6 input-column">
                                         <select class="form-control" type= "time" name="appointmenttime" required="">
                                             <optgroup label="Selecciona el horario">
                                                 <option value="12:00" selected="">12:00</option>
