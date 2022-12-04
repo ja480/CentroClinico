@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Citas</title>
+        <title>Vista detallada citas</title>
         {% load static %}
         {% load widget_tweaks %}
         {% load bootstrap4 %}
@@ -73,6 +73,7 @@
                         {% csrf_token %}
                         <div class="btn_group">
                             <a href="detalle/{{Appointment.id}}" title="Ver" type="button" class = "btn btn-sucess">Ver</a>
+                            <a href="actualizar/{{Appointment.id}}" title="Actualizar" type="button" class = "btn btn-primary">Actualizar</a>
                             <button class = "btn btn-danger" onclic = "return eliminar();" type="submit">Eliminar</button>
                         </div>
                         </form>
