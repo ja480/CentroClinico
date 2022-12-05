@@ -10,4 +10,4 @@ class RentalAdmin(admin.ModelAdmin):
     }
 
 admin.site.register(Patient)
-admin.site.register(Doctor)
+admin.site.register(Appointment)
