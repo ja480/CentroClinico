@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.models import User,Group
 from django.contrib.auth import authenticate,logout,login
@@ -9,6 +9,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse
 from django.contrib.messages.views import SuccessMessageMixin
 from citas.models import Appointment
+from .forms import FormAppointment
+
 
 def index(request):
 	return render(request, 'Index.html')
@@ -43,50 +45,15 @@ def crearcuenta(request):
 				user = User.objects.create_user(first_name=name,email=email,password=password,username=email)
 				pat_group = Group.objects.get(name='Patient')
 				pat_group.user_set.add(user)
-				#print(pat_group)
 				user.save()
-				#print(user)
 				error = "no"
 				
 			else:
 				error = "yes"
 		except Exception as e:
 			error = "yes"
-			#print("Error:",e)
 	d = {'error' : error}
-	#print(error)
 	return render(request,'crearcuenta.html',d)
-	#return render(request,'createaccount.html')
-
-# def login(request):
-# 	error=""
-# 	if request.method == 'POST':
-# 		email = request.POST['email']
-# 		password = request.POST['password']
-# 		try:
-# 			if password == password:
-# 				return render(request,'index.html')
-# 		except Exception as e:
-# 			error = "yes"
-# 	return render(request, 'login.html')
-
-
-# def login(request):
-#     error = ""
-#     if request.method == 'POST':
-#         u = request.POST['email']
-#         p = request.POST['password']
-#         user = authenticate(username=u, password=p)
-#         try:
-#             if user.is_staff:
-#                 login(request, user)
-#                 error = "no"
-#             else:
-#                 error = "yes"
-#         except:
-#             error = "yes"
-#     return render(request,'registration/login.html', locals())
-
 
 def login(request):
 	error = ""
@@ -102,35 +69,21 @@ def login(request):
 			return render (request,'index.html')	
 		except Exception as e:
 			error = "yes"
-			#print(e)
-			#raise e
+
 	return render(request,'registration/login.html')
 
 def Logout(request):
     logout(request)
     return redirect('index')
 	
-def MakeAppointments(request):
-	error = ""
-	if not request.user.is_active:
-		return redirect('loginpage')
-	alldoctors = Doctor.objects.all()
-	d = { 'alldoctors' : alldoctors }
-	g = request.user.groups.all()[0].name
-	if g == 'Patient':
-		if request.method == 'POST':
-			doctorname = request.POST['doctorname']
-			patientname = request.GET['patientname']
-			patientemail = request.POST['patientemail']
-			appointmentdate = request.POST['appointmentdate']
-			appointmenttime = request.POST['appointmenttime']
-			symptoms = request.POST['symptoms']
-			try:
-				Appointment.objects.create(doctorname=doctorname,doctoremail=doctoremail,patientname=patientname,patientemail=patientemail,appointmentdate=appointmentdate,appointmenttime=appointmenttime,symptoms=symptoms,status=True,prescription="")
-				error = "no"
-			except:
-				error = "yes"
-			e = {"error":error}
-			return render(request,'pateintmakeappointments.html',e)
-		elif request.method == 'GET':
-			return render(request,'pateintmakeappointments.html',d)
+def regcita(request):
+	form = FormAppointment(request.POST or None)
+
+	if request.method == "POST":
+		if form.is_valid():
+			form.save()
+		return redirect ('index')
+	context = {
+		"form":form
+	}
+	return render(request, 'regcita.html', context)

@@ -36,7 +36,7 @@ class Patient(models.Model):
 class Appointment(models.Model):
 	doctorname = models.CharField(max_length=50)
 	patientemail = models.EmailField(max_length=50)
-	appointmentdate = models.DateField(max_length=10)
+	patientemail = models.DateField(max_length=10)
 	appointmenttime = models.TimeField(max_length=10)
 	symptoms = models.CharField(max_length=100)
 	patientname = models.ForeignKey(Patient, on_delete=models.CASCADE)

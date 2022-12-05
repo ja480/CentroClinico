@@ -25,7 +25,7 @@ from citas.views import ListadoCita, DetallesCita, CrearCita, CitasEliminar, Cit
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/',index),
+    path('index/',index,name="index"),
     path('registro/', regcita),
     path('servicios/', servicios),
     path('sobrenosotros/', sobrenosotros),
