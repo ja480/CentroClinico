@@ -9,5 +9,6 @@ class RentalAdmin(admin.ModelAdmin):
         map_fields.AddressField: {'widget': map_widgets.GoogleMaps},
     }
 
+admin.site.register(Doctor)
 admin.site.register(Patient)
 admin.site.register(Appointment)

@@ -1,9 +1,4 @@
 {% load static %}
-
-
-
-
-{% load static %}
 <!DOCTYPE html>
 
 <head>
@@ -93,31 +88,33 @@
     {% endif %}
 
     <br><br><br><br>
-    <div class="container register-form mt-2" style="margin-top: 10px;">
-        <h2 class="text-center">Login</h2>
-        <form method="post">
-            {% csrf_token %}
-            <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
-            <div class="form-group col-sm-4 center"><input class="form-control" type="email" name="email"
-                    placeholder="Email"></div>
-            <div class="form-group col-sm-4 center"><input class="form-control" type="password" name="password"
-                    placeholder="Password"></div>
-            <div class="form-content col-sm-4">
-                <div class="row mt-2">
-                    <p class="mb-1">
-                        <a target="_blank" href="/crearcuenta/">Crea una cuenta</a>
-                    </p>
-                    <p class="mb-1">
-                        <a target="_blank" href="{% url 'login_admin' %}">Admin</a>
-                    </p>
+    <form method="post">
+        {% csrf_token %}
+        <!-- <h2 class="sr-only">Login Form</h2>
+        <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div> -->
+        <div class="container register-form mt-2" style="width : 600px;">
+            <div class="form">
+                <div class="note">
+                    <p>Centro Clinico</p>
                 </div>
+
                 <div class="form-content">
-                    <input type="submit" value="Login" class="form-control btn btn-primary">
+                    <div class="row mt-5">
+                        {{ form }}
+                        <p class="mb-1">
+                            <a target="_blank" href="/crearcuenta/">Crea una cuenta</a>
+                          </p>
+                    </div>
+                    <div class="form-content">
+                        <button type="submit" class="btnSubmit">Login</button>
+                    </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 
     {% endblock %}
 
