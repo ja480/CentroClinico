@@ -102,12 +102,10 @@ def loginpage(request):
 				g = request.user.groups.all()[0].name
 				if g == 'Doctor':
 					page = "doctor"
-					d = {'error': error,'page':page}
-					return render(request,'index.html',d)
+					return render(request,'index.html')
 				elif g == 'Patient':
 					page = "patient"
-					d = {'error': error,'page':page}
-					return render(request,'index.html',d)
+					return render(request,'index.html')
 			else:
 				error = "yes"
 		except Exception as e:
