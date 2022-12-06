@@ -103,15 +103,11 @@ def loginpage(request):
 				if g == 'Doctor':
 					page = "doctor"
 					d = {'error': error,'page':page}
-					return render(request,'doctorhome.html',d)
-				elif g == 'Receptionist':
-					page = "reception"
-					d = {'error': error,'page':page}
-					return render(request,'receptionhome.html',d)
+					return render(request,'index.html',d)
 				elif g == 'Patient':
 					page = "patient"
 					d = {'error': error,'page':page}
-					return render(request,'patienthome.html',d)
+					return render(request,'index.html',d)
 			else:
 				error = "yes"
 		except Exception as e:
@@ -121,8 +117,16 @@ def loginpage(request):
 	return render(request,'registration/login.html')
 
 def Logout(request):
-    logout(request)
-    return redirect('index')
+	if not request.user.is_active:
+		return redirect('loginpage')
+	logout(request)
+	return redirect('loginpage')
+
+def Logout_admin(request):
+	if not request.user.is_staff:
+		return redirect('login_admin')
+	logout(request)
+	return redirect('login_admin')
 	
 def regcita(request):
 	form = FormAppointment(request.POST or None)

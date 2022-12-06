@@ -18,8 +18,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from CentroClinico.views import *
+from citas.views import *
+
 # from CentroClinico.views import index, regcita, sobrenosotros, servicios, crearcuenta,adminlogin,login
-from citas.views import ListadoCita, DetallesCita, CrearCita, CitasEliminar, CitasActualizar
+# from citas.views import ListadoCita, DetallesCita, CrearCita, CitasEliminar, CitasActualizar
 
 
 
@@ -27,12 +29,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin_login/',Login_admin,name='login_admin'),
     path('login/',loginpage,name='loginpage'),
+    path('logout/',Logout,name='logout'),
     path('index/',index,name="index"),
     path('registro/', regcita),
     path('servicios/', servicios),
     path('sobrenosotros/', sobrenosotros),
     path('crearcuenta/', crearcuenta),
-    path('account/', include('django.contrib.auth.urls')),
+    # path('account/', include('django.contrib.auth.urls')),
     path('citas/', ListadoCita.as_view(template_name = 'citas/Citas.html'), name='leer'),
     path('citas/detalle/<int:pk>', DetallesCita.as_view(template_name = 'citas/DetallesCitas.html'), name = 'detalle'),
     path('citas/crear/', CrearCita.as_view(template_name = 'citas/CrearCita.html'), name = 'crear'),
