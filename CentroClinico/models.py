@@ -28,7 +28,7 @@ class Patient(models.Model):
 		return self.name
 
 class Appointment(models.Model):
-	doctorname = models.CharField(max_length=50)
+	doctorname = models.ForeignKey(Doctor, on_delete=models.CASCADE)
 	patientemail = models.EmailField(max_length=50)
 	patientemail = models.DateField(max_length=10)
 	appointmenttime = models.TimeField(max_length=10)

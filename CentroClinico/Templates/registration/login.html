@@ -77,8 +77,6 @@
 </head>
 
 <body>
-
-
     {% if error == "no" %}
     <script>
         alert('Logged In Successfully');
@@ -106,10 +104,10 @@
             <div class="form-content col-sm-4">
                 <div class="row mt-2">
                     <p class="mb-1">
-                        <a target="_blank" href="/crearcuenta/">Crea una cuenta</a>
+                        <a href="/crearcuenta/">Crea una cuenta</a>
                     </p>
                     <p class="mb-1">
-                        <a target="_blank" href="{% url 'login_admin' %}">Admin</a>
+                        <a href="{% url 'login_admin' %}">Admin</a>
                     </p>
                 </div>
                 <div class="form-content">

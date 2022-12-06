@@ -70,14 +70,11 @@
         }
     </style>
 </head>
-
 <body>
-
-
     {% if error == "no" %}
     <script>
         alert('Logged In Successfully');
-        window.location = ('{% url 'index' %}');
+        window.location = ('{% url 'indexadmin' %}');
     </script>
     {% endif %}
 

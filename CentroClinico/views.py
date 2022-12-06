@@ -15,6 +15,9 @@ from .forms import FormAppointment
 def index(request):
 	return render(request, 'Index.html')
 
+def indexadmin(request):
+	return render(request, 'IndexAdmin.html')
+
 def regcita(request):
     return render(request, 'regcita.html')
 
@@ -115,10 +118,8 @@ def loginpage(request):
 	return render(request,'registration/login.html')
 
 def Logout(request):
-	if not request.user.is_active:
-		return redirect('loginpage')
 	logout(request)
-	return redirect('loginpage')
+	return redirect('index')
 
 def Logout_admin(request):
 	if not request.user.is_staff:
