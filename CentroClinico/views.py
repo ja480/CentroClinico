@@ -55,21 +55,69 @@ def crearcuenta(request):
 	d = {'error' : error}
 	return render(request,'crearcuenta.html',d)
 
-def login(request):
-	error = ""
+# def login(request):
+# 	error = ""
 
+# 	if request.method == 'POST':
+# 		u = request.POST.get['email']
+# 		p = request.POST.get['password']
+# 		user = authenticate(request,username=u,password=p)
+# 		try:
+# 			if user is not None:
+# 				login(request,user)
+# 				error = "no"
+# 			return render (request,'index.html')	
+# 		except Exception as e:
+# 			error = "yes"
+
+# 	return render(request,'registration/login.html')
+def Login_admin(request):
+	error = ""
 	if request.method == 'POST':
-		u = request.POST.get['email']
-		p = request.POST.get['password']
+		u = request.POST['username']
+		p = request.POST['password']
+		user = authenticate(username=u,password=p)
+		try:
+			if user.is_staff:
+				login(request,user)
+				error = "no"
+			else:
+				error = "yes"
+		except:
+			error = "yes"
+	d = {'error' : error}
+	return render(request,'registration/adminlogin.html',d)
+
+def loginpage(request):
+	error = ""
+	page = ""
+	if request.method == 'POST':
+		u = request.POST['email']
+		p = request.POST['password']
 		user = authenticate(request,username=u,password=p)
 		try:
 			if user is not None:
 				login(request,user)
 				error = "no"
-			return render (request,'index.html')	
+				g = request.user.groups.all()[0].name
+				if g == 'Doctor':
+					page = "doctor"
+					d = {'error': error,'page':page}
+					return render(request,'doctorhome.html',d)
+				elif g == 'Receptionist':
+					page = "reception"
+					d = {'error': error,'page':page}
+					return render(request,'receptionhome.html',d)
+				elif g == 'Patient':
+					page = "patient"
+					d = {'error': error,'page':page}
+					return render(request,'patienthome.html',d)
+			else:
+				error = "yes"
 		except Exception as e:
 			error = "yes"
-
+			#print(e)
+			#raise e
 	return render(request,'registration/login.html')
 
 def Logout(request):

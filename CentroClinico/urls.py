@@ -17,14 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
-from CentroClinico.views import index, regcita, sobrenosotros, servicios, crearcuenta
+from CentroClinico.views import *
+# from CentroClinico.views import index, regcita, sobrenosotros, servicios, crearcuenta,adminlogin,login
 from citas.views import ListadoCita, DetallesCita, CrearCita, CitasEliminar, CitasActualizar
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin_login/',Login_admin,name='login_admin'),
+    path('login/',loginpage,name='loginpage'),
     path('index/',index,name="index"),
     path('registro/', regcita),
     path('servicios/', servicios),

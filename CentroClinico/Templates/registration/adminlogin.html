@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>{% block title %} Iniciar sesion {% endblock %}</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+</head>
+{% block sections %}
+<!-- //Este es el cuerpo -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Login </title>
+
+    <style type="text/css">
+        body {
+            color: #aa082e;
+            background-color: #b6bde7;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        .note {
+            text-align: center;
+            height: 80px;
+            background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+            color: #fff;
+            font-weight: bold;
+            line-height: 80px;
+        }
+
+        .form-content {
+            padding: 4%;
+            border: 1px solid #ced4da;
+            margin-bottom: 1%;
+            text-align: center;
+        }
+
+        .form-control {
+            border-radius: 1.5rem;
+            text-align: center;
+        }
+
+        .btnSubmit {
+            border: none;
+            border-radius: 1.5rem;
+            padding: 1%;
+            width: 30%;
+            cursor: pointer;
+            background: #0062cc;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    {% if error == "no" %}
+    <script>
+        alert('Logged In Successfully');
+        window.location = ('{% url 'index' %}');
+    </script>
+    {% endif %}
+
+    {% if error == "yes" %}
+    <script>
+        alert('Something went wrong, Try Again');
+    </script>
+    {% endif %}
+
+    <br><br><br><br>
+    <div class="container" style="margin-top: 50px;">
+        <h2 class="text-center">Admin Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" class="form-control" name="username" placeholder="username">
+            <br>
+            <input type="password" class="form-control" name="password" placeholder="password">
+            <br>
+            <input type="submit" value="Login" class="form-control btn btn-primary">
+        </form>
+    </div>
+
+    {% endblock %}
+
+</html>
