@@ -19,13 +19,13 @@ def indexadmin(request):
 	return render(request, 'indexadmin.html')
 
 def regcita(request):
-    return render(request, 'regcita.html')
+	return render(request, 'regcita.html')
 
 def sobrenosotros(request):
-    return render(request, 'sobrenosotros.html')
+	return render(request, 'sobrenosotros.html')
 
 def servicios(request):
-    return render(request, 'servicios.html')
+	return render(request, 'servicios.html')
 
 # MOD
 
@@ -144,17 +144,20 @@ def MakeAppointments(request):
 	if not request.user.is_active:
 		return redirect('loginpage')
 	alldoctors = Doctor.objects.all()
-	d = { 'alldoctors' : alldoctors }
-	g = request.user.groups
-	if g == 'Patient':
+	print(alldoctors);
+	d = { 'alldoctors' : alldoctors }	
+	if request.user.groups.filter(name='Patient').exists():
 		if request.method == 'POST':
-			# doctoremail = request.POST['doctoremail']
+			print('ok')
+			doctoremail = request.POST['doctoremail']
 			doctorname = request.POST['doctorname']
 			patientname = request.POST['patientname']
 			patientemail = request.POST['patientemail']
 			appointmentdate = request.POST['appointmentdate']
 			appointmenttime = request.POST['appointmenttime']
 			symptoms = request.POST['symptoms']
+			Appointment.objects.create(doctorname=doctorname,doctoremail=doctoremail,patientname=patientname,patientemail=patientemail,appointmentdate=appointmentdate,appointmenttime=appointmenttime,symptoms=symptoms,status=True,prescription="")
+
 			try:
 				Appointment.objects.create(doctorname=doctorname,doctoremail=doctoremail,patientname=patientname,patientemail=patientemail,appointmentdate=appointmentdate,appointmenttime=appointmenttime,symptoms=symptoms,status=True,prescription="")
 				error = "no"
@@ -164,3 +167,4 @@ def MakeAppointments(request):
 			return render(request,'regcita.html',e)
 		elif request.method == 'GET':
 			return render(request,'regcita.html',d)
+	return render(request,'regcita.html')

@@ -13,4 +13,3 @@ class Appointment(models.Model):
 	symptoms = models.CharField(max_length=100)
 	status = models.CharField(max_length=100)
 	prescription = models.CharField(max_length=200)
-	
