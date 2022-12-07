@@ -85,19 +85,19 @@
 </body>
 
 <body>
-    {% if error == "no" %}
-    <script type="text/javascript">
-        alert('Appointment Booked Sucessfully..........')
-        window.location = ('{% url index %}')
-    </script>
-    {% endif%}
-    
-    {% if error == "yes" %}
-    <script type="text/javascript">
-        /*alert('{{e}}')*/
-        alert('Something gone wrong....')
-    </script>
-    {% endif%}   
+ {% if error == "no" %}
+<script type="text/javascript">
+    alert('Appointment Booked Sucessfully..........')
+    window.location = ('{% url index %}')
+</script>
+{% endif%}
+
+{% if error == "yes" %}
+<script type="text/javascript">
+    /*alert('{{e}}')*/
+    alert('Something gone wrong....')
+</script>
+{% endif%}   
 </body>
 <!-- {% if error == "no" %}
 <script type="text/javascript">
