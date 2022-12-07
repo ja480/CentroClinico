@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse
 from django.contrib.messages.views import SuccessMessageMixin
 from citas.models import Appointment
-from .forms import FormAppointment
+# from .forms import FormAppointment
 
 
 def index(request):
@@ -144,7 +144,6 @@ def MakeAppointments(request):
 	if not request.user.is_active:
 		return redirect('loginpage')
 	alldoctors = Doctor.objects.all()
-	print(alldoctors);
 	d = { 'alldoctors' : alldoctors }	
 	if request.user.groups.filter(name='Patient').exists():
 		if request.method == 'POST':
@@ -156,8 +155,6 @@ def MakeAppointments(request):
 			appointmentdate = request.POST['appointmentdate']
 			appointmenttime = request.POST['appointmenttime']
 			symptoms = request.POST['symptoms']
-			Appointment.objects.create(doctorname=doctorname,doctoremail=doctoremail,patientname=patientname,patientemail=patientemail,appointmentdate=appointmentdate,appointmenttime=appointmenttime,symptoms=symptoms,status=True,prescription="")
-
 			try:
 				Appointment.objects.create(doctorname=doctorname,doctoremail=doctoremail,patientname=patientname,patientemail=patientemail,appointmentdate=appointmentdate,appointmenttime=appointmenttime,symptoms=symptoms,status=True,prescription="")
 				error = "no"

@@ -27,9 +27,9 @@
                                 </div>
                                 <div class="col-sm-6 input-column">
                                     <select class="form-control" name="doctoremail">
-                                            {% for d in alldoctors %}
-                                            <option value="{{d.email}}">{{d.name}}----->{{d.specialization}}</option>
-                                            {% endfor %}
+                                        {% for d in alldoctors %}
+                                        <option value="{{d.email}}">{{d.name}}----->{{d.specialization}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -84,8 +84,22 @@
 {% endblock %}
 </body>
 
-</html>
-{% if error == "no" %}
+<body>
+    {% if error == "no" %}
+    <script type="text/javascript">
+        alert('Appointment Booked Sucessfully..........')
+        window.location = ('{% url index %}')
+    </script>
+    {% endif%}
+    
+    {% if error == "yes" %}
+    <script type="text/javascript">
+        /*alert('{{e}}')*/
+        alert('Something gone wrong....')
+    </script>
+    {% endif%}   
+</body>
+<!-- {% if error == "no" %}
 <script type="text/javascript">
     alert('Appointment Booked Sucessfully..........')
     window.location = ('{% url index %}')
@@ -97,4 +111,6 @@
     /*alert('{{e}}')*/
     alert('Something gone wrong....')
 </script>
-{% endif%}
+{% endif%} -->
+
+</html>
