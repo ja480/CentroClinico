@@ -47,7 +47,7 @@ def crearcuenta(request):
 				Patient.objects.create(name=name,email=email,password=password,gender=gender,phonenumber=phonenumber,address=address,birthdate=birthdate,bloodgroup=bloodgroup)
 				user = User.objects.create_user(first_name=name,email=email,password=password,username=email)
 				pat_group = Group.objects.get(name='Patient')
-				pat_group.user_set.add(user)
+				user.groups.add(pat_group)
 				user.save()
 				error = "no"
 				

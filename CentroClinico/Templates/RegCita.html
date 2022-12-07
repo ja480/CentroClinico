@@ -2,7 +2,6 @@
 {% load static %}
 {% block title %} Registro {% endblock %}
 
-
 {% block sections %}
 <!-- Contact Section-->
 <section class="page-section" id="register">
@@ -26,9 +25,9 @@
                                     <label class="col-form-label" for="name-input-field">Doctor's Name & Field</label>
                                 </div>
                                 <div class="col-sm-6 input-column">
-                                    <select class="form-control" name="doctoremail">
-                                        {% for d in alldoctors %}
-                                        <option value="{{d.email}}">{{d.name}}----->{{d.specialization}}</option>
+                                    <select class="form-control" name="doctorname">
+                                        {% for d in doctor %}
+                                        <option value="{{d.name}}">{{d.name}}----->{{d.specialization}}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -74,7 +73,8 @@
                                     <textarea class="form-control" name="symptoms" required=""></textarea>
                                 </div>
                             </div>
-                            <button class="btn btn-light submit-button" type="submit">Make Appointment</button>
+                            <br>
+                            <button class="btn btn-lg btn-primary" type="submit">Make Appointment</button>
                     </form>
                 </div>
             </div>

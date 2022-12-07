@@ -111,6 +111,7 @@
                     </select>
                 </div>
             </div>
+            <br>
             <button class="btn btn-primary submit-button" type="submit">Crear cuenta</button>
         </form>
     </div>
@@ -119,18 +120,17 @@
 
 {% endblock %}
 
-{% if error == "no" %}
+{% if error == "yes" %}
 <script type="text/javascript">
     alert('El email ingresado ya existe')
     window.location = ('#')
 </script>
 {% endif%}
 
-{% if error == "yes" %}
+{% if error == "no" %}
 <script type="text/javascript">
-    /*alert('{{e}}')*/
     alert('El email ingresado se guardo correctamente')
-    window.location = ("{% url 'login' %}")
+    window.location = ("{% url 'loginpage' %}")
 </script>
 {% endif %}
 
