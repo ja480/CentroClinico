@@ -127,17 +127,17 @@ def Logout_admin(request):
 	logout(request)
 	return redirect('login_admin')
 	
-def regcita(request):
-	form = FormAppointment(request.POST or None)
+# def regcita(request):
+# 	form = FormAppointment(request.POST or None)
 
-	if request.method == "POST":
-		if form.is_valid():
-			form.save()
-		return redirect ('index')
-	context = {
-		"form":form
-	}
-	return render(request, 'regcita.html', context)
+# 	if request.method == "POST":
+# 		if form.is_valid():
+# 			form.save()
+# 		return redirect ('index')
+# 	context = {
+# 		"form":form
+# 	}
+# 	return render(request, 'regcita.html', context)
 
 def MakeAppointments(request):
 	error = ""
@@ -145,10 +145,10 @@ def MakeAppointments(request):
 		return redirect('loginpage')
 	alldoctors = Doctor.objects.all()
 	d = { 'alldoctors' : alldoctors }
-	g = request.user.groups.all()[0].name
+	g = request.user.groups
 	if g == 'Patient':
 		if request.method == 'POST':
-			doctoremail = request.POST['doctoremail']
+			# doctoremail = request.POST['doctoremail']
 			doctorname = request.POST['doctorname']
 			patientname = request.POST['patientname']
 			patientemail = request.POST['patientemail']

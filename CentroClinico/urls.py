@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from CentroClinico.views import *
 from citas.views import *
 
-# from CentroClinico.views import index, regcita, sobrenosotros, servicios, crearcuenta,adminlogin,login
+# from CentroClinico.views import index, regcita, sobrenosotros, servicios, crearcuenta,adminlogin,Login_admin,MakeAppointments
 # from citas.views import ListadoCita, DetallesCita, CrearCita, CitasEliminar, CitasActualizar
 
 
@@ -32,7 +32,8 @@ urlpatterns = [
     path('logout/',Logout,name='logout'),
     path('index/',index,name='index'),
     path('indexadmin/',indexadmin,name='indexadmin'),
-    path('registro/', regcita),
+    path('makeappointments/',MakeAppointments,name='makeappointments'),
+    # path('makeappointments/',MakeAppointments,name='makeappointments'),
     path('servicios/', servicios),
     path('sobrenosotros/', sobrenosotros),
     path('crearcuenta/', crearcuenta),
