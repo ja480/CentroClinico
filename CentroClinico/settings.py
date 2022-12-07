@@ -139,7 +139,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'CentroClinico/static'),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AIzaSyADKzLDTllBgGVJ5WrrGsXZQiVaep5IMAA='API_KEY'
-GOOGLE_MAPS_API_KEY = 'API_KEY'
 
-
+GOOGLE_MAPS_API_KEY = 'SAMPLE_KEY'
