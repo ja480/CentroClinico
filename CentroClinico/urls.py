@@ -27,6 +27,7 @@ from citas.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', servicios),
     path('admin_login/',Login_admin,name='login_admin'),
     path('login/',loginpage,name='loginpage'),
     path('logout/',Logout,name='logout'),

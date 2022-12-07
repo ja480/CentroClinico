@@ -105,17 +105,16 @@ def loginpage(request):
 				g = request.user.groups.all()[0].name
 				if g == 'Doctor':
 					page = "doctor"
-					return render(request,'index.html')
+					return render(request,'servicios.html')
 				elif g == 'Patient':
 					page = "patient"
-					return render(request,'index.html')
+					return render(request,'servicios.html')
 			else:
 				error = "yes"
-		except Exception as e:
+		except:
 			error = "yes"
-			#print(e)
-			#raise e
-	return render(request,'registration/login.html')
+	d = {'error' : error}
+	return render(request,'registration/login.html',d)
 
 def Logout(request):
 	logout(request)
