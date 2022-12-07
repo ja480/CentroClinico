@@ -1,9 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import Group
 from django_google_maps import fields as map_fields
 
 class Rental(models.Model):
     address = map_fields.AddressField(max_length=200)
     geolocation = map_fields.GeoLocationField(max_length=100)
+
+new_group, created = Group.objects.get_or_create(name='Patient')
+new_group, created = Group.objects.get_or_create(name='Doctor')
 
 
 class Doctor(models.Model):
@@ -24,7 +28,6 @@ class Patient(models.Model):
 	address = models.CharField(max_length=100)
 	birthdate = models.DateField()
 	bloodgroup = models.CharField(max_length=5)
-
 	def __str__(self):
 		return self.name
 
