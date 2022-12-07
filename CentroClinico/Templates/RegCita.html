@@ -25,9 +25,9 @@
                                     <label class="col-form-label" for="name-input-field">Doctor's Name & Field</label>
                                 </div>
                                 <div class="col-sm-6 input-column">
-                                    <select class="form-control" name="doctorname">
-                                        {% for d in doctor %}
-                                        <option value="{{d.name}}">{{d.name}}----->{{d.specialization}}</option>
+                                    <select class="form-control" name="doctoremail">
+                                        {% for d in alldoctors %}
+                                        <option value="{{d.email}}">{{d.name}}----->{{d.specialization}}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
