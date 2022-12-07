@@ -13,10 +13,10 @@ from .forms import FormAppointment
 
 
 def index(request):
-	return render(request, 'Index.html')
+	return render(request, 'index.html')
 
 def indexadmin(request):
-	return render(request, 'IndexAdmin.html')
+	return render(request, 'indexadmin.html')
 
 def regcita(request):
     return render(request, 'regcita.html')
@@ -138,3 +138,29 @@ def regcita(request):
 		"form":form
 	}
 	return render(request, 'regcita.html', context)
+
+def MakeAppointments(request):
+	error = ""
+	if not request.user.is_active:
+		return redirect('loginpage')
+	alldoctors = Doctor.objects.all()
+	d = { 'alldoctors' : alldoctors }
+	g = request.user.groups.all()[0].name
+	if g == 'Patient':
+		if request.method == 'POST':
+			doctoremail = request.POST['doctoremail']
+			doctorname = request.POST['doctorname']
+			patientname = request.POST['patientname']
+			patientemail = request.POST['patientemail']
+			appointmentdate = request.POST['appointmentdate']
+			appointmenttime = request.POST['appointmenttime']
+			symptoms = request.POST['symptoms']
+			try:
+				Appointment.objects.create(doctorname=doctorname,doctoremail=doctoremail,patientname=patientname,patientemail=patientemail,appointmentdate=appointmentdate,appointmenttime=appointmenttime,symptoms=symptoms,status=True,prescription="")
+				error = "no"
+			except:
+				error = "yes"
+			e = {"error":error}
+			return render(request,'regcita.html',e)
+		elif request.method == 'GET':
+			return render(request,'regcita.html',d)
