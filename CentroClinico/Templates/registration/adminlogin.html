@@ -72,7 +72,7 @@
     {% if error == "no" %}
     <script>
         alert('Logged In Successfully');
-        window.location = ('{% url 'indexadmin' %}');
+        window.location = "{% url 'indexadmin' %}";
     </script>
     {% endif %}
 
