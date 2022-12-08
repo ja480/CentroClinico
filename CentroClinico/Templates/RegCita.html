@@ -63,7 +63,8 @@
                                         for="repeat-pawssword-input-field">Appointment Time</label></div>
                                 <div class="col-sm-6 input-column">
                                     <input class="form-control" type="time" placeholder="enter time"
-                                        name="appointmenttime" required="">
+                                        name="appointmenttime" required="" min="08:00" max="16:00">
+                                    <!-- <input type="time" id="appt" name="appt" min="09:00 am" max="09:00 pm" required> -->
                                 </div>
                             </div>
                             <div class="form-row form-group">
@@ -85,19 +86,19 @@
 </body>
 
 <body>
- {% if error == "no" %}
-<script type="text/javascript">
-    alert('Appointment Booked Sucessfully..........')
-    window.location = ('{% url index %}')
-</script>
-{% endif%}
+    {% if error == "no" %}
+    <script type="text/javascript">
+        alert('Appointment Booked Sucessfully..........')
+        window.location = ('{% url index %}')
+    </script>
+    {% endif%}
 
-{% if error == "yes" %}
-<script type="text/javascript">
-    /*alert('{{e}}')*/
-    alert('Something gone wrong....')
-</script>
-{% endif%}   
+    {% if error == "yes" %}
+    <script type="text/javascript">
+        /*alert('{{e}}')*/
+        alert('Something gone wrong....')
+    </script>
+    {% endif%}
 </body>
 <!-- {% if error == "no" %}
 <script type="text/javascript">
