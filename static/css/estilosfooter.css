@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+}
+
+/* Configuracion FOOTER */
+footer{
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    background-color: aqua;
+    align-items: center;
+    padding: 5px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* Fin Configuracion FOOTER */
+
