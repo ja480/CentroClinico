@@ -1,0 +1,6 @@
+asgiref
+Django
+django-cpf-cnpj
+django-widget-tweaks
+sqlparse
+django-extensions
