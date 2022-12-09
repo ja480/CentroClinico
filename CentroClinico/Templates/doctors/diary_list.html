@@ -1,9 +1,5 @@
 {% extends "accounts/index.html" %}
-
-{% block title %}
-    Agendas
-{% endblock %}
-
+{% block title %} Diary {% endblock %}
 {% block accounts_container %}
 <h2>Agendas Disponiveis</h2>
 <table class="table table-bordered">
@@ -13,39 +9,39 @@
                 ID
             </th>
             <th>
-                Medico
+                Doctor
             </th>
             <th>
-                Dia
+                Day
             </th>
             <th>
-                Horario
+                Schedule
             </th>
             <th>
-                Opções
+                Options
             </th>
         </tr>
     </thead>
     <tbody>
-        {% for consulta in object_list %}
+        {% for appointment in object_list %}
         <tr>
             <td>
-                <a href=""># {{ consulta.pk }}</a>
+                <a href=""># {{ appointment.pk }}</a>
             </td>
             <td>
-                {{ consulta.medico }}
+                {{ appointment.doctor }}
             </td>
             <td>
-                {{ consulta.dia|date:"d/m/Y" }}
+                {{ appointment.day|date:"d/m/y" }}
             </td>
             <td>
-                {{ consulta.get_horario_display }}
+                {{ appointment.get_schedule_display }}
             </td>
             <td>
-                <a href="{% url 'medicos:agendar_consulta_atualizar' consulta.id %}" class="text-primary" style="padding-left: 10px; text-decoration: none;">
+                <a href="{% url 'doctors:scheduling_appointment_update' appointment.id %}" class="text-primary" style="padding-left: 10px; text-decoration: none;">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="{% url 'medicos:agendar_consulta_deletar' consulta.id %}" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
+                <a href="{% url 'doctors:scheduling_appointment_delete' appointment.id %}" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </td>

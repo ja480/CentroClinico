@@ -11,9 +11,7 @@ from django.utils.encoding import force_bytes
 from django.views.generic import CreateView, UpdateView, FormView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
-from django.contrib.auth.views import (
-    LoginView, LogoutView,
-    )
+from django.contrib.auth.views import (LoginView, LogoutView,)
 from .models import User
 from .forms import UserAdminCreationForm
 

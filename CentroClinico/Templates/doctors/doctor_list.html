@@ -1,11 +1,7 @@
 {% extends "accounts/index.html" %}
-
-{% block title %}
-    Medicos
-{% endblock %}
-
+{% block title %} Doctors {% endblock %}
 {% block accounts_container %}
-<h2>Medicos</h2>
+<h2>Doctors</h2>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -13,42 +9,30 @@
                 ID
             </th>
             <th>
-                Nome
+                Name
             </th>
             <th>
                 E-mail
             </th>
             <th>
-                CRM 
-            </th>
-            <th>
-                Especialidade
-            </th>
-            <th>
-                Telefone
+                Speciality
             </th>
         </tr>
     </thead>
     <tbody>
-        {% for medico in object_list %}
+        {% for doctor in object_list %}
         <tr>
             <td>
-                <a href=""># {{ medico.pk }}</a>
+                <a href=""># {{ doctor.pk }}</a>
             </td>
             <td>
-                {{ medico.nome }}
+                {{ doctor.name }}
             </td>
             <td>
-                {{ medico.email }}
+                {{ doctor.email }}
             </td>
             <td>
-                {{ medico.crm }}
-            </td>
-            <td>
-                {{ medico.especialidade }}
-            </td>
-            <td>
-                {{ medico.telefone }}
+                {{ doctor.especialidade }}
             </td>
         </tr>
         {% endfor %}

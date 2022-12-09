@@ -55,8 +55,8 @@ class DiaryCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
     model = Diary
     login_url = 'accounts:login'
-    template_name = 'doctors/dairy_register.html'
-    fields = ['doctor', 'day', 'shedule']
+    template_name = 'doctors/diary_register.html'
+    fields = ['doctor', 'day', 'schedule']
     success_url = reverse_lazy('doctors:diary_list')
     
     def form_valid(self, form):
@@ -67,8 +67,8 @@ class DiaryUpdateView(LoginRequiredMixin, TestMixinIsAdmin, UpdateView):
 
     model = Diary
     login_url = 'accounts:login'
-    template_name = 'doctors/shedule_register.html'
-    fields = ['doctor', 'day', 'shedule']
+    template_name = 'doctors/diary_register.html'
+    fields = ['doctor', 'day', 'schedule']
     success_url = reverse_lazy('doctors:diary_list')
     
     def form_valid(self, form):

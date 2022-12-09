@@ -20,9 +20,9 @@ class Patient(models.Model):
     def __str__(self):
         return f'{self.user.name}'
     
-class Consult(models.Model):
-    diary =  OneToOneField(Diary, on_delete=models.CASCADE, related_name='consult')
-    patient = ForeignKey(Patient, on_delete=models.CASCADE, related_name='consult')
+class Appointment(models.Model):
+    diary =  OneToOneField(Diary, on_delete=models.CASCADE, related_name='appointment')
+    patient = ForeignKey(Patient, on_delete=models.CASCADE, related_name='appointment')
     
     class Meta:
         unique_together = ('diary', 'patient')

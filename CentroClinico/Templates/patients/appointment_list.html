@@ -1,11 +1,7 @@
 {% extends "accounts/index.html" %}
-
-{% block title %}
-    Minhas Consultas
-{% endblock %}
-
+{% block title %} My Appointment's {% endblock %}
 {% block accounts_container %}
-<h2>Minhas Consultas</h2>
+<h2>My Appointment's</h2>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -13,39 +9,39 @@
                 ID
             </th>
             <th>
-                Medico
+                Doctor
             </th>
             <th>
-                Dia
+                Day
             </th>
             <th>
-                Horario
+                Schedule
             </th>
             <th>
-                Opções
+                Opciones
             </th>
         </tr>
     </thead>
     <tbody>
-        {% for consulta in object_list %}
+        {% for appointment in object_list %}
         <tr>
             <td>
-                <a href=""># {{ consulta.pk }}</a>
+                <a href=""># {{ appoinment.pk }}</a>
             </td>
             <td>
-                {{ consulta.agenda.medico }}
+                {{ appoinment.diary.doctor }}
             </td>
             <td>
-                {{ consulta.agenda.dia|date:"d/m/Y" }}
+                {{ appointment.diary.day|date:"d/m/y" }}
             </td>
             <td>
-                {{ consulta.agenda.get_horario_display }}
+                {{ appointment.diary.get_schedule_display }}
             </td>
             <td>
-                <a href="{% url 'medicos:agendar_consulta_atualizar' consulta.id %}" class="text-primary" style="padding-left: 10px; text-decoration: none;">
+                <a href="{% url 'doctors:scheduling_appointment_update' appointment.id %}" class="text-primary" style="padding-left: 10px; text-decoration: none;">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="{% url 'medicos:agendar_consulta_deletar' consulta.id %}" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
+                <a href="{% url 'doctors:scheduling_appointment_delete' appointment.id %}" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </td>

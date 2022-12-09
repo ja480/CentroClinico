@@ -1,11 +1,7 @@
 {% extends "accounts/index.html" %}
-
-{% block title %}
-   Especialidade
-{% endblock %}
-
+{% block title %} Speciality {% endblock %}
 {% block accounts_container %}
-<h2>Especialidade</h2>
+<h2>speciality</h2>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -13,18 +9,18 @@
                 ID
             </th>
             <th>
-                Nome
+                Name
             </th>
         </tr>
     </thead>
     <tbody>
-        {% for especialidade in object_list %}
+        {% for speciality in object_list %}
         <tr>
             <td>
-                <a href=""># {{ especialidade.pk }}</a>
+                <a href=""># {{ speciality.pk }}</a>
             </td>
             <td>
-                {{ especialidade.nome }}
+                {{ speciality.name }}
             </td>
         </tr>
         {% endfor %}

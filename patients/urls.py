@@ -6,8 +6,8 @@ app_name = 'patients'
 urlpatterns = [
     path('register/', views.patient_register, name='patient_register'),
     path('update/', views.patient_update, name='patient_update'),
-    path('consults/', views.consult_list, name='consult_list'),
-    path('consults/create/', views.consult_register, name='consult_create'),
-    path('consults/update/<int:pk>/', views.consult_update, name='consult_update'),
-    path('consults/delete/<int:pk>/', views.consult_delete, name='consult_delete'),
+    path('appointments/', views.appointment_list, name='appointment_list'),
+    path('appointments/create/', views.appointment_register, name='appointment_create'),
+    path('appointments/update/<int:pk>/', views.appointment_update, name='appointment_update'),
+    path('appointments/delete/<int:pk>/', views.appointment_delete, name='appointment_delete'),
 ]

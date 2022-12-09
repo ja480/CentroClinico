@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Patient, Consult
+from .models import Patient, Appointment 
 
 
 class PatientCreateView(LoginRequiredMixin ,CreateView):
@@ -38,13 +38,13 @@ class PatientUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
         
 
-class ConsultCreateView(LoginRequiredMixin, CreateView):
+class AppointmentCreateView(LoginRequiredMixin, CreateView):
 
-    model = Consult
+    model = Appointment
     login_url = 'accounts:login'
     template_name = 'patients/register.html'
     fields = ['diary']
-    success_url = reverse_lazy('patients:consult_list')
+    success_url = reverse_lazy('patients:appointment_list')
     
     def form_valid(self, form):
         try:
@@ -53,39 +53,39 @@ class ConsultCreateView(LoginRequiredMixin, CreateView):
         except IntegrityError as e:
             if 'UNIQUE constraint failed' in e.args[0]:
                 messages.warning(self.request, 'No puedes reservar esta cita')
-                return HttpResponseRedirect(reverse_lazy('patients:consult_create'))
+                return HttpResponseRedirect(reverse_lazy('patients:appointment_create'))
         except Patient.DoesNotExist:
             messages.warning(self.request, 'Complete su registro')
             return HttpResponseRedirect(reverse_lazy('patients:patient_register'))
         messages.info(self.request, 'Consulta reservada con exito!')
-        return HttpResponseRedirect(reverse_lazy('patients:consult_list'))
+        return HttpResponseRedirect(reverse_lazy('patients:appointment_list'))
     
-class ConsultUpdateView(LoginRequiredMixin, UpdateView):
+class AppointmentUpdateView(LoginRequiredMixin, UpdateView):
 
-    model = Consult
+    model = Appointment
     login_url = 'accounts:login'
     template_name = 'patients/register.html'
     fields = ['diary']
-    success_url = reverse_lazy('doctors:consult_list')
+    success_url = reverse_lazy('doctors:appointment_list')
     
     def form_valid(self, form):
         form.instance.patient = Patient.objects.get(user=self.request.user)
         return super().form_valid(form)
     
-class ConsultDeleteView(LoginRequiredMixin, DeleteView):
-    model = Consult
-    success_url = reverse_lazy('patients:consult_list')
+class AppointmentDeleteView(LoginRequiredMixin, DeleteView):
+    model = Appointment
+    success_url = reverse_lazy('patients:appointment_list')
     template_name = 'form_delete.html'
 
     def get_success_url(self):
         messages.success(self.request, "Consulta reservada con exito!")
-        return reverse_lazy('patients:consult_list')
+        return reverse_lazy('patients:appointment_list')
 
 
-class ConsultListView(LoginRequiredMixin, ListView):
+class AppointmentListView(LoginRequiredMixin, ListView):
     
     login_url = 'accounts:login'
-    template_name = 'patients/consult_list.html'
+    template_name = 'patients/appointment_list.html'
 
     def get_queryset(self):
         user=self.request.user
@@ -95,8 +95,8 @@ class ConsultListView(LoginRequiredMixin, ListView):
             messages.warning(self.request, 'Crea una Consulta')
             return None
         try:
-            consults = Consult.objects.filter(patient=patient).order_by('-pk')
-        except Consult.DoesNotExist:
+            consults = Appointment.objects.filter(patient=patient).order_by('-pk')
+        except Appointment.DoesNotExist:
             messages.warning(self.request, 'Crea una Consulta')
             return None
         return consults
@@ -104,7 +104,7 @@ class ConsultListView(LoginRequiredMixin, ListView):
 
 patient_register = PatientCreateView.as_view()
 patient_update = PatientUpdateView.as_view()
-consult_list = ConsultListView.as_view()
-consult_register = ConsultCreateView.as_view()
-consult_update = ConsultUpdateView.as_view()
-consult_delete = ConsultDeleteView.as_view()
+appointment_list = AppointmentListView.as_view()
+appointment_register = AppointmentCreateView.as_view()
+appointment_update = AppointmentUpdateView.as_view()
+appointment_delete = AppointmentDeleteView.as_view()
