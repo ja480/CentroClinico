@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db.models.fields.related import ForeignKey
 
-class Speciality(models.Model):
+class Consultingroom(models.Model):
     name = models.CharField(verbose_name="Name", max_length=200)
     
     def __str__(self):
@@ -13,7 +13,8 @@ class Speciality(models.Model):
 class Doctor(models.Model):
     name = models.CharField(verbose_name="Name", max_length=200)
     email = models.EmailField(verbose_name="Email")
-    speciality = ForeignKey(Speciality,
+    speciality = models.CharField(verbose_name="Speciality", max_length=200)
+    consultingroom = ForeignKey(Consultingroom,
                                on_delete=models.CASCADE,
                                related_name='doctors')
     def __str__(self):

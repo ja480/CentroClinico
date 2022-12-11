@@ -52,12 +52,12 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
             form.save()
         except IntegrityError as e:
             if 'UNIQUE constraint failed' in e.args[0]:
-                messages.warning(self.request, 'No puedes reservar esta cita')
+                messages.warning(self.request, 'You cannot pull apart this date')
                 return HttpResponseRedirect(reverse_lazy('patients:appointment_create'))
         except Patient.DoesNotExist:
-            messages.warning(self.request, 'Complete su registro')
+            messages.warning(self.request, 'You must complete the register')
             return HttpResponseRedirect(reverse_lazy('patients:patient_register'))
-        messages.info(self.request, 'Consulta reservada con exito!')
+        messages.info(self.request, 'Appointment pulled apart sucefully!')
         return HttpResponseRedirect(reverse_lazy('patients:appointment_list'))
     
 class AppointmentUpdateView(LoginRequiredMixin, UpdateView):
@@ -78,7 +78,7 @@ class AppointmentDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'form_delete.html'
 
     def get_success_url(self):
-        messages.success(self.request, "Consulta reservada con exito!")
+        messages.success(self.request, "Appointment pulled apart sucefully!")
         return reverse_lazy('patients:appointment_list')
 
 
@@ -92,12 +92,12 @@ class AppointmentListView(LoginRequiredMixin, ListView):
         try:
             patient = Patient.objects.get(user=user)
         except Patient.DoesNotExist:
-            messages.warning(self.request, 'Crea una Consulta')
+            messages.warning(self.request, 'Schedule an Appointment')
             return None
         try:
             consults = Appointment.objects.filter(patient=patient).order_by('-pk')
         except Appointment.DoesNotExist:
-            messages.warning(self.request, 'Crea una Consulta')
+            messages.warning(self.request, 'Schedule an Appointment')
             return None
         return consults
 

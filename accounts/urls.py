@@ -10,7 +10,7 @@ app_name = 'accounts'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('change-datos/', views.update_user, name='update_user'),
+    path('change-info/', views.update_user, name='update_user'),
     path('change-pass/', views.update_password, name='update_password'),
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),

@@ -43,11 +43,11 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'services'%}">Services</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'meetus'%}">Meet Us</a></li>
                         <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/registro/">Registrar Cita</a></li> -->
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'patients:appointment_create'%}">Consultas</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'patients:appointment_create'%}">Appointments</a></li>
                         {% if user.is_staff or user.is_superuser %}
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'doctors:scheduling_appointment'%}">Diary</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'doctors:doctor_register'%}">Doctors</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'doctors:speciality_register'%}">Speciality</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'doctors:consultingroom_register'%}">Consulting Room</a></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -57,7 +57,7 @@
                     </a>
                     <ul class="dropdown-menu text-small shadow">
                       {% if user.is_authenticated %}
-                        <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:index' %}">My Accpunt</a></li>
+                        <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:index' %}">My Account</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
                         <li><hr class="dropdown-divider"></li>
@@ -84,7 +84,7 @@
                   {% if request.user.is_staff or request.user.is_superuser %}
                   <a href="{% url 'doctors:diary_list'%}" class="list-group-item">Diary</a>
                   <a href="{% url 'doctors:doctor_list'%}" class="list-group-item">Doctor</a>
-                  <a href="{% url 'doctors:speciality_list'%}" class="list-group-item">Speciality</a>
+                  <a href="{% url 'doctors:consultingroom_list'%}" class="list-group-item">Consulting Room</a>
                   {% endif %}
                 </div>
             </div>

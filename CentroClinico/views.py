@@ -4,7 +4,7 @@ from django.views.generic import View
 class IndexView(View):
     
     def get(self, request):
-        return render(request, 'indexcopia.html')
+        return render(request, 'indexusuario.html')
     
 def services(request):
         return render(request, 'services.html')

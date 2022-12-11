@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Doctor, Diary, Speciality
+from .models import Doctor, Diary, Consultingroom
 
 
 class TestMixinIsAdmin(UserPassesTestMixin):
@@ -23,7 +23,7 @@ class DoctorCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
     model = Doctor
     login_url = 'accounts:login'
     template_name = 'doctors/register.html'
-    fields = ['name', 'email', 'speciality']
+    fields = ['name', 'email', 'speciality', 'consultingroom']
     success_url = reverse_lazy('doctors:doctor_list')
     
 class DoctorListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
@@ -34,21 +34,21 @@ class DoctorListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     def get_queryset(self):
         return Doctor.objects.all().order_by('-pk')
     
-class SpecialityCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
+class ConsultingroomCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
-    model = Speciality
+    model = Consultingroom
     login_url = 'accounts:login'
     template_name = 'doctors/register.html'
     fields = ['name',]
-    success_url = reverse_lazy('doctors:speciality_list')
+    success_url = reverse_lazy('doctors:consultingroom_list')
     
-class SpecialityListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
+class ConsultingroomListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
     login_url = 'accounts:login'
-    template_name = 'doctors/speciality_list.html'
+    template_name = 'doctors/consultingroom_list.html'
 
     def get_queryset(self):
-        return Speciality.objects.all().order_by('-pk')
+        return Consultingroom.objects.all().order_by('-pk')
 
 
 class DiaryCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
@@ -82,7 +82,7 @@ class DiaryDeleteView(LoginRequiredMixin, TestMixinIsAdmin, DeleteView):
     template_name = 'form_delete.html'
 
     def get_success_url(self):
-        messages.success(self.request, "Consulta apartada exitosamente!")
+        messages.success(self.request, "Appointment pulled apart sucefully!")
         return reverse_lazy('doctors:diary_list')
 
 
@@ -96,8 +96,8 @@ class DiaryListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
 doctor_register = DoctorCreateView.as_view()
 doctor_list = DoctorListView.as_view()
-speciality_register = SpecialityCreateView.as_view()
-speciality_list = SpecialityListView.as_view()
+consultingroom_register = ConsultingroomCreateView.as_view()
+consultingroom_list = ConsultingroomListView.as_view()
 diary_register = DiaryCreateView.as_view()
 diary_update = DiaryUpdateView.as_view()
 diary_list = DiaryListView.as_view()

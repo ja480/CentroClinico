@@ -11,7 +11,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         'Usuario', max_length=30, unique=True, validators=[
             validators.RegexValidator(
                 re.compile('^[\w.@+-]+$'),
-                'Ingrese un usuario valido. '
+                'User not valid. '
                 'Este campo debe contener letras, números '
                 'y los siguientes carácteres: @/./+/-/_.'
                 ,  'invalid'

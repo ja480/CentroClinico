@@ -17,6 +17,9 @@
             <th>
                 Speciality
             </th>
+            <th>
+                Consulting Room
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -32,7 +35,10 @@
                 {{ doctor.email }}
             </td>
             <td>
-                {{ doctor.especialidade }}
+                {{ doctor.speciality }}
+            </td>
+            <td>
+                {{ doctor.consultingroom }}
             </td>
         </tr>
         {% endfor %}
