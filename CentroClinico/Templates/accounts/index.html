@@ -1,98 +1,119 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <style>
-        .footer {
-            position: absolute;
-            bottom: 0;
-        }
+<style>
+    .footer {
+        position: absolute;
+        bottom: 0;
+    }
 
-        .copyright {
-            position: absolute;
-            bottom: 0;
-        }
-    </style>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>{% block title %} My Account {% endblock %}</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
-            <div class="container">
-                {% block content %}
-                <a class="navbar-brand" href="#page-top">💉🩺 Centro Clínico</a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'services'%}">Services</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'meetus'%}">Meet Us</a></li>
-                        <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/registro/">Registrar Cita</a></li> -->
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'patients:appointment_create'%}">Appointments</a></li>
-                        {% if user.is_staff or user.is_superuser %}
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'doctors:scheduling_appointment'%}">Diary</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'doctors:doctor_register'%}">Doctors</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'doctors:consultingroom_register'%}">Consulting Room</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-                <div class="flex-shrink-0 dropdown">
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="{% static 'assets/img/logoclinica.png' %}" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small shadow">
-                      {% if user.is_authenticated %}
-                        <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:index' %}">My Account</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                      {% else %}
-                        <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:register' %}">Register</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:login' %}">Login</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                      {% endif %}
-                    </ul>
-                  </div>
-                {% endblock %}
+    .copyright {
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>{% block title %} My Account {% endblock %}</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
+        <div class="container">
+            {% block content %}
+            <a class="navbar-brand" href="#page-top">💉🩺 Centro Clínico</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="{% url 'services'%}">Services</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="{% url 'meetus'%}">Meet Us</a></li>
+                    <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/registro/">Registrar Cita</a></li> -->
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="{% url 'patients:appointment_create'%}">Appointments</a></li>
+                    {% if user.is_staff or user.is_superuser %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="{% url 'doctors:scheduling_appointment'%}">Diary</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="{% url 'doctors:doctor_register'%}">Doctors</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="{% url 'doctors:consultingroom_register'%}">Consulting Room</a></li>
+                    {% endif %}
+                </ul>
             </div>
-        </nav>
-        <br>
-        <div class="row text-center">
-            <div class="col-md-4">
-                <div class="list-group">
-                  <a href="#" class="list-group-item active">My Account</a>
-                  <a href="{% url 'accounts:update_user'%}" class="list-group-item">Change Name/Email</a>
-                  <a href="{% url 'accounts:update_password'%}" class="list-group-item">Change Password</a>
-                  <a href="{% url 'patients:patient_update'%}" class="list-group-item"> Complementary Info </a>
-                  <a href="{% url 'patients:appointment_list'%}" class="list-group-item">My Appointment's</a>
-                  {% if request.user.is_staff or request.user.is_superuser %}
-                  <a href="{% url 'doctors:diary_list'%}" class="list-group-item">Diary</a>
-                  <a href="{% url 'doctors:doctor_list'%}" class="list-group-item">Doctor</a>
-                  <a href="{% url 'doctors:consultingroom_list'%}" class="list-group-item">Consulting Room</a>
-                  {% endif %}
-                </div>
+            <div class="flex-shrink-0 dropdown">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img src="{% static 'assets/img/logoclinica.png' %}" alt="mdo" width="32" height="32"
+                        class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small shadow">
+                    {% if user.is_authenticated %}
+                    <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:index' %}">My Account</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    {% else %}
+                    <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:register' %}">Register</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a target="_blank" class="dropdown-item" href="{% url 'accounts:login' %}">Login</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
-            <div class="col-md-8">
+            {% endblock %}
+        </div>
+    </nav>
+    <br>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">My Account</a>
+                <a href="{% url 'accounts:update_user'%}" class="list-group-item">Change Name/Email</a>
+                <a href="{% url 'accounts:update_password'%}" class="list-group-item">Change Password</a>
+                <a href="{% url 'patients:patient_update'%}" class="list-group-item"> Complementary Info </a>
+                <a href="{% url 'patients:appointment_list'%}" class="list-group-item">My Appointment's</a>
+                {% if request.user.is_staff or request.user.is_superuser %}
+                <a href="{% url 'doctors:diary_list'%}" class="list-group-item">Diary</a>
+                <a href="{% url 'doctors:doctor_list'%}" class="list-group-item">Doctor</a>
+                <a href="{% url 'doctors:consultingroom_list'%}" class="list-group-item">Consulting Room</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-8">
             {% block accounts_container %}
-                <h2>Welcome! {{ user.name }} </h2>
-            {% endblock  %}
-            </div>
+            <h2>Welcome! {{ user.name }} </h2>
+            {% endblock %}
+        </div>
 
         <!-- Footer-->
         <footer class="footer text-center">
@@ -110,10 +131,14 @@
                     <!-- Footer Social Icons-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">Redes sociales</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                                class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                                class="fab fa-fw fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                                class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                                class="fab fa-fw fa-dribbble"></i></a>
                     </div>
                     <!-- Footer Google maps-->
                     <div id="mapa"></div>
@@ -129,5 +154,6 @@
         <!-- Core theme JS-->
         <script src="{% static 'js/scripts.js' %}"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+</body>
+
 </html>
