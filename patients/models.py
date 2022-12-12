@@ -23,9 +23,8 @@ class Patient(models.Model):
 class Appointment(models.Model):
     diary =  OneToOneField(Diary, on_delete=models.CASCADE, related_name='appointment')
     patient = ForeignKey(Patient, on_delete=models.CASCADE, related_name='appointment')
-    consultingroom = ForeignKey(Consultingroom, on_delete=models.CASCADE, related_name='appointment' )
     class Meta:
-        unique_together = ('diary', 'patient', 'consultingroom')
+        unique_together = ('diary', 'patient')
         
     def __str__(self):
         return f'{self.diary} - {self.patient}'

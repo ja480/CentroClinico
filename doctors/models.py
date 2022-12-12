@@ -2,15 +2,13 @@ from datetime import date
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.db.models.fields.related import ForeignKey
+from django.db.models.fields.related import ForeignKey, OneToOneField
+import logging
 
 class Consultingroom(models.Model):
     consultingrooms = (
         ("1", "Consultory 1"),
         ("2", "Consultory 2"),
-        ("3", "Consultory 3"),
-        ("4", "Consultory 4"),
-        ("5", "Consultory 5"),
     )
     name = models.CharField(max_length=15, choices=consultingrooms)
     
@@ -48,9 +46,6 @@ class Diary(models.Model):
     consultingrooms = (
         ("1", "Consultory 1"),
         ("2", "Consultory 2"),
-        ("3", "Consultory 3"),
-        ("4", "Consultory 4"),
-        ("5", "Consultory 5"),
     )
     consultingroom = models.CharField(max_length=15, choices=consultingrooms)
     user = models.ForeignKey(
@@ -59,7 +54,7 @@ class Diary(models.Model):
         on_delete=models.CASCADE
     )
     class Meta:
-        unique_together = ['day', 'schedule']
+        unique_together = ['day', 'schedule', 'consultingroom']
         
     def __str__(self):
-        return f'{self.day.strftime("%b %d %Y")} - {self.get_schedule_display()} - {self.doctor}'
+        return f'{self.day.strftime("%b %d %Y")} - {self.get_schedule_display()} - {self.consultingroom}'
