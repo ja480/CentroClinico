@@ -25,7 +25,7 @@ def validate_day(value):
     weekday = date.fromisoformat(f'{value}').weekday()
 
     if value < today:
-        raise ValidationError('No es posible esocger un dia atrasado.')
+        raise ValidationError('No es posible escoger un dia atrasado.')
     if (weekday == 5) or (weekday == 6):
         raise ValidationError('Seleccione un dia habil de la semana.')
 
