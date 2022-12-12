@@ -2,7 +2,18 @@
 {% block title %} My Appointment's {% endblock %}
 {% block accounts_container %}
 <h2>My Appointment's</h2>
-<table class="table table-bordered">
+<!--Adding jQuery cdn-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<!--Adding datatable cdn-->
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<!--Initializing datatable-->
+<script>
+    $(document).ready(function () {
+        $('#tblappointments').DataTable();
+    });
+</script>
+
+<table id="tblappointments" class="table table-bordered">
     <thead>
         <tr>
             <th>
