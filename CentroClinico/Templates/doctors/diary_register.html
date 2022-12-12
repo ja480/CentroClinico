@@ -5,14 +5,14 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="page-header">
-            <h1>Schedule an Appointment</h1>
+            <h1>Pull apart dates for Appointment's</h1>
         </div>
         <form class="form-horizontal" method="post">
             {% csrf_token %}
             {% for error in form.non_field_errors %}
-            <!-- <div class="alert alert-danger">
+            <div class="alert alert-danger">
                 {{ error }}
-            </div> -->
+            </div> 
             {% endfor %}
             <fieldset>
                 <div class="form-group{% if form.doctor.errors %} has-error{% endif %}">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group{% if form.day.errors %} has-error{% endif %}">
                   <label for="{{ form.day.auto_ud }}" class="col-md-3 control-label">
-                  {{ form.dia.label }}</label>
+                  {{ form.day.label }}</label>
                   <div class="col-md-9">
                     {% render_field form.day type="date" class="form-control" placeholder="01/01/2022" %}
                     {% for error in form.day.errors %}
@@ -47,6 +47,19 @@
                     {% endfor %}
                   </div>
                 </div>
+
+                <div class="form-group{% if form.consultingroom.errors %} has-error{% endif %}">
+                  <label for="{{ form.consultingroom.auto_id }}" class="col-md-3 control-label">
+                  {{ form.consultingroom.label }}</label>
+                  <div class="col-md-9">
+                    {% render_field form.consultingroom class="form-control" %}
+
+                    {% for error in form.consultingroom.errors %}
+                    <span class="help-block">{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <div class="col-md-9 col-md-offset-3">
                     <br>

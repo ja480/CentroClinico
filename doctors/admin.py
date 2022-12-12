@@ -1,9 +1,6 @@
 from django.contrib import admin
 
 from doctors.models import *
-
-class ConsultingroomAdmin(admin.ModelAdmin):
-    list_display = ['name']
     
 class DoctorAdmin(admin.ModelAdmin):
     list_display = [
@@ -15,6 +12,5 @@ class DiaryAdmin(admin.ModelAdmin):
         'day', 'doctor', 'schedule',
     ]
     
-admin.site.register(Consultingroom, ConsultingroomAdmin)
 admin.site.register(Doctor, DoctorAdmin)
 admin.site.register(Diary, DiaryAdmin)

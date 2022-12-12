@@ -5,7 +5,14 @@ from django.core.exceptions import ValidationError
 from django.db.models.fields.related import ForeignKey
 
 class Consultingroom(models.Model):
-    name = models.CharField(verbose_name="Name", max_length=200)
+    consultingrooms = (
+        ("1", "Consultory 1"),
+        ("2", "Consultory 2"),
+        ("3", "Consultory 3"),
+        ("4", "Consultory 4"),
+        ("5", "Consultory 5"),
+    )
+    name = models.CharField(max_length=15, choices=consultingrooms)
     
     def __str__(self):
         return f'{self.name}'
@@ -14,9 +21,6 @@ class Doctor(models.Model):
     name = models.CharField(verbose_name="Name", max_length=200)
     email = models.EmailField(verbose_name="Email")
     speciality = models.CharField(verbose_name="Speciality", max_length=200)
-    consultingroom = ForeignKey(Consultingroom,
-                               on_delete=models.CASCADE,
-                               related_name='doctors')
     def __str__(self):
         return f'{self.name}'
 
@@ -41,14 +45,21 @@ class Diary(models.Model):
         ("5", "11:00 a 12:00"),
     )
     schedule = models.CharField(max_length=10, choices=schedules)
-    
+    consultingrooms = (
+        ("1", "Consultory 1"),
+        ("2", "Consultory 2"),
+        ("3", "Consultory 3"),
+        ("4", "Consultory 4"),
+        ("5", "Consultory 5"),
+    )
+    consultingroom = models.CharField(max_length=15, choices=consultingrooms)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, 
         verbose_name='Usuario', 
         on_delete=models.CASCADE
     )
     class Meta:
-        unique_together = ['schedule', 'day']
+        unique_together = ['day', 'schedule']
         
     def __str__(self):
         return f'{self.day.strftime("%b %d %Y")} - {self.get_schedule_display()} - {self.doctor}'

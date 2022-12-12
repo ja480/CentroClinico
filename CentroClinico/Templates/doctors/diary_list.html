@@ -1,7 +1,7 @@
 {% extends "accounts/index.html" %}
 {% block title %} Diary {% endblock %}
 {% block accounts_container %}
-<h2>Agendas Disponiveis</h2>
+<h2>Available Schedule's</h2>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -10,6 +10,12 @@
             </th>
             <th>
                 Doctor
+            </th>
+            <th>
+                Consultory
+            </th>
+            <th>
+                Speciality
             </th>
             <th>
                 Day
@@ -31,6 +37,12 @@
             <td>
                 {{ appointment.doctor }}
             </td>
+            <th>
+                {{ appointment.consultingroom }}
+            </th>
+            <th>
+                {{ appointment.doctor.speciality }}
+            </th>
             <td>
                 {{ appointment.day|date:"d/m/y" }}
             </td>
