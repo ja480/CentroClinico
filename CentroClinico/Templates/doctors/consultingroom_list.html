@@ -1,0 +1,40 @@
+{% extends "accounts/index.html" %}
+{% block title %} Consulting Room's {% endblock %}
+{% block accounts_container %}
+<h2>Consulting Room's</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for consultingroom in object_list %}
+        <tr>
+            <td>
+                <a href=""># {{ consultingroom.pk }}</a>
+            </td>
+            <td>
+                {{ consultingroom.name }}
+            </td>
+            <td>
+                <a href="#" class="text-primary" style="padding-left: 10px; text-decoration: none;">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="#" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -49,10 +49,12 @@
                 {{ appointment.diary.get_schedule_display }}
             </td>
             <td>
-                <a href="{% url 'doctors:scheduling_appointment_update' appointment.id %}" class="text-primary" style="padding-left: 10px; text-decoration: none;">
+                <a href="{% url 'doctors:scheduling_appointment_update' appointment.id %}" class="text-primary"
+                    style="padding-left: 10px; text-decoration: none;">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="{% url 'doctors:scheduling_appointment_delete' appointment.id %}" class="mr-1 text-danger" style="padding-left: 10px; text-decoration: none;">
+                <a href="{% url 'doctors:scheduling_appointment_delete' appointment.id %}" class="mr-1 text-danger"
+                    style="padding-left: 10px; text-decoration: none;">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </td>
